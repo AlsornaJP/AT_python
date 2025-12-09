@@ -1,6 +1,6 @@
-from TV import TV
+from .tv import tv
 
-class series:
+class series(tv):
     def __init__(self,title,year,seasons,episodes):
         super().__init__(title,year)
         self.seasons = seasons

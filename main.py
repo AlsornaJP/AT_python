@@ -1,6 +1,7 @@
 import pandas as pd
 from scraping.get_soup import get_soup
 from scraping.criar_dicionarios_filmes import criar_dicionarios_filmes
+from funcs.criar_objeto_movie import criar_objeto_movie
 
 # HTML inicial
 url_imdb = "https://www.imdb.com/pt/chart/top/"
@@ -25,3 +26,9 @@ print(f"\nLista dos 10 primeiros filmes: {dez_primeiros_filmes}\n")
 lista_de_filmes = criar_dicionarios_filmes(html_imdb)
 df_filmes = pd.DataFrame(lista_de_filmes)
 df_filmes
+
+# criando lista de objetos movie
+objetos_movie = []
+for filme in lista_de_filmes:
+    objetos_movie.append(criar_objeto_movie(filme))
+[print(filme) for filme in objetos_movie]

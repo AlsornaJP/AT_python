@@ -11,9 +11,9 @@ def criar_dicionarios_filmes(html):
         nota = filme.find("span", class_="ipc-rating-star--rating")
 
         filme_dict = {
-            "Titulo":titulo.get_text(strip=True),
-            "Ano":ano.get_text(strip=True),
-            "Nota":nota.get_text(strip=True)
+            "titulo":titulo.get_text(strip=True),
+            "ano":ano.get_text(strip=True),
+            "nota":nota.get_text(strip=True)
         }
         lista_de_dicionarios_filme.append(filme_dict)
     return lista_de_dicionarios_filme

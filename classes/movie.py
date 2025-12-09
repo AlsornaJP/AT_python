@@ -1,6 +1,6 @@
-from TV import TV
+from .tv import tv
 
-class movie(TV):
+class movie(tv):
     def __init__(self, title, year, rating):
         super().__init__(title, year)
         self.rating = rating
