@@ -2,6 +2,7 @@ import pandas as pd
 from scraping.get_soup import get_soup
 from scraping.criar_dicionarios_filmes import criar_dicionarios_filmes
 from funcs.criar_objeto_movie import criar_objeto_movie
+from classes.series import series
 
 # HTML inicial
 url_imdb = "https://www.imdb.com/pt/chart/top/"
@@ -31,4 +32,7 @@ df_filmes
 objetos_movie = []
 for filme in lista_de_filmes:
     objetos_movie.append(criar_objeto_movie(filme))
+
+series_aleatorias = [series(title='Breaking Bad', year='2008', seasons='5', episodes='62'), series(title='Ruptura', year='2022', seasons='2', episodes='19')]
+objetos_movie.extend(series_aleatorias)
 [print(filme) for filme in objetos_movie]
