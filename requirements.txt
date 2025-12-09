@@ -1,0 +1,13 @@
+pandas
+bs4
+numpy
+requests
+sqlalchemy
+sqlalchemy.orm
+sqlalchemy.exc
+unicode
+unicodedata
+datetime
+urllib.request
+urllib
+urllib.error
