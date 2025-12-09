@@ -1,6 +1,6 @@
 import pandas as pd
-from get_soup import get_soup
-from criar_dicionarios_filmes import criar_dicionarios_filmes
+from scraping.get_soup import get_soup
+from scraping.criar_dicionarios_filmes import criar_dicionarios_filmes
 
 # HTML inicial
 url_imdb = "https://www.imdb.com/pt/chart/top/"
