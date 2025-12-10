@@ -14,7 +14,7 @@ def adicionar_entradas(lista_de_objetos):
                 filme = movies(
                     title = objeto.title,
                     year = objeto.year,
-                    rating = objeto.rating
+                    rating = float(objeto.rating.replace(',','.'))
                 )
                 session.add(filme)
 
@@ -22,8 +22,8 @@ def adicionar_entradas(lista_de_objetos):
                 filme = series(
                     title = objeto.title,
                     year = objeto.year,
-                    seasons = objeto.seasons,
-                    episodes = objeto.episodes
+                    seasons = int(objeto.seasons),
+                    episodes = int(objeto.episodes)
                 )
                 session.add(filme)
         session.commit()
