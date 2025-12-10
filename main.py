@@ -6,6 +6,8 @@ from classes.Series import Series
 from classes.Movie import Movie
 from banco_de_dados.tabelas import Session,movies,series, engine
 from banco_de_dados.adicionar_registros import adicionar_entradas
+import json
+import csv
 
 
 
@@ -52,7 +54,7 @@ with Session() as session:
 
 df_movies = pd.DataFrame([objeto.__dict__ for objeto in tabela_movies_inteira]).drop('_sa_instance_state',axis=1)
 df_movies.set_index('movie_id',inplace=True)
-print(df_movies[:5])
+# print(df_movies[:5])
 
 
 tabela_series_inteira = None
@@ -61,4 +63,24 @@ with Session() as session:
 
 df_series = pd.DataFrame([objeto.__dict__ for objeto in tabela_series_inteira]).drop('_sa_instance_state',axis=1)
 df_series.set_index('series_id',inplace=True)
-print(df_series[:5])
+# print(df_series[:5])
+
+# exportando dados
+
+df_movies_ordenado = df_movies[df_movies['rating'] > 9.0].sort_values('rating', ascending=False)
+# print(df_movies_ordenado[0:5])
+
+conteudo_movies = df_movies.to_json()
+csv_movies = df_movies.to_csv()
+conteudo_series = df_series.to_json()
+csv_series = df_series.to_csv()
+
+with open("movies.json","w",encoding="utf-8") as arquivo:
+    arquivo.write(conteudo_movies)
+with open("movies.csv","w",encoding="utf-8") as arquivo:
+    arquivo.write(csv_movies)
+
+with open("series.json","w",encoding="utf-8") as arquivo:
+    arquivo.write(conteudo_series)
+with open("series.csv","w",encoding="utf-8") as arquivo:
+    arquivo.write(csv_series)
