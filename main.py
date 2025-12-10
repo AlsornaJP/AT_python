@@ -89,4 +89,11 @@ with open("series.csv","w",encoding="utf-8") as arquivo:
 # criação de coluna categoria
 
 df_movies['categoria'] = df_movies['rating'].apply(adaptar_nota)
-print(df_movies)
+# print(df_movies[:10])
+
+# tabela filmes por ano
+
+contagem_filmes_por_ano = df_movies.groupby('year')['title'].count()
+print(contagem_filmes_por_ano.sort_values(ascending=False))
+# contagem_filmes_por_ano.to_sql('filmes_ano', engine)
+
