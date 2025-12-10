@@ -6,6 +6,7 @@ from classes.Series import Series
 from classes.Movie import Movie
 from banco_de_dados.tabelas import Session,movies,series, engine
 from banco_de_dados.adicionar_registros import adicionar_entradas
+from funcs.adaptar_nota import adaptar_nota
 import json
 import csv
 
@@ -32,7 +33,7 @@ print(f"\nLista dos 10 primeiros filmes: {dez_primeiros_filmes}\n")
 # coletando intformações sobre filmes
 lista_de_filmes = criar_dicionarios_filmes(html_imdb)
 df_filmes = pd.DataFrame(lista_de_filmes)
-df_filmes
+''' print(df_filmes)'''
 
 # criando lista de objetos movie
 objetos_movie = []
@@ -75,7 +76,7 @@ csv_movies = df_movies.to_csv()
 conteudo_series = df_series.to_json()
 csv_series = df_series.to_csv()
 
-with open("movies.json","w",encoding="utf-8") as arquivo:
+'''with open("movies.json","w",encoding="utf-8") as arquivo:
     arquivo.write(conteudo_movies)
 with open("movies.csv","w",encoding="utf-8") as arquivo:
     arquivo.write(csv_movies)
@@ -83,4 +84,9 @@ with open("movies.csv","w",encoding="utf-8") as arquivo:
 with open("series.json","w",encoding="utf-8") as arquivo:
     arquivo.write(conteudo_series)
 with open("series.csv","w",encoding="utf-8") as arquivo:
-    arquivo.write(csv_series)
+    arquivo.write(csv_series)'''
+
+# criação de coluna categoria
+
+df_movies['categoria'] = df_movies['rating'].apply(adaptar_nota)
+print(df_movies)
